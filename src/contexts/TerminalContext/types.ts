@@ -1,9 +1,7 @@
-interface ITerminalContextState {
-  inputValue: string;
-}
+import { IReducerState } from './terminalReducer';
 
 interface ITerminalContextActions {
   setInputValue: (newValue: string) => void;
 }
 
-export type TerminalContextType = ITerminalContextState & ITerminalContextActions;
+export type TerminalContextType = IReducerState & ITerminalContextActions;

@@ -1,18 +1,21 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useReducer } from 'react';
 import { IChildrenProps as IProps } from 'types/props';
-import { INPUT_DEFAULT_VALUE } from './const';
+import terminalReducer, { initialState } from './terminalReducer';
+import { setInputValueAction } from './terminalReducer/actions';
 import { TerminalContextType } from './types';
 
 const Context = createContext<TerminalContextType>({
-  inputValue: INPUT_DEFAULT_VALUE,
+  ...initialState,
   setInputValue: () => null,
 });
 
 const TerminalContext = ({ children }: IProps) => {
-  const [inputValue, setInputValue] = useState(INPUT_DEFAULT_VALUE);
+  const [reducerState, dispatch] = useReducer(terminalReducer, initialState);
+
+  const setInputValue = (newValue: string) => dispatch(setInputValueAction(newValue));
 
   const contextValue: TerminalContextType = {
-    inputValue,
+    ...reducerState,
     setInputValue,
   };
 

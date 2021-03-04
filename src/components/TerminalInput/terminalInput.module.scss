@@ -6,9 +6,14 @@
   flex-direction: row;
 }
 
-.terminalInput {
+.inputForm {
   flex-grow: 1;
+}
+
+.terminalInput {
   font-size: 100%;
+  width: 100%;
+  padding: 0;
   color: $mainFontColor;
   background: unset;
   caret-color: $mainFontColor;

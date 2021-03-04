@@ -1,6 +1,6 @@
 import { IReducerAction } from 'types/reducer';
-import { ADD_TERMINAL_ROW, RESET_INPUT_VALUE, SET_INPUT_VALUE } from './actionTypes';
-import { DEFAULT_INPUT_VALUE } from './const';
+import { ADD_TERMINAL_ROW, CLEAR_TEMINAL_ROWS, RESET_INPUT_VALUE, SET_INPUT_VALUE } from './actionTypes';
+import { DEFAULT_INPUT_VALUE, DEFAULT_TERMINAL_ROWS } from './const';
 import { IReducerState } from './types';
 
 const terminalReducer = (state: IReducerState, action: IReducerAction): IReducerState => {
@@ -23,6 +23,12 @@ const terminalReducer = (state: IReducerState, action: IReducerAction): IReducer
       return {
         ...state,
         terminalRows: [...state.terminalRows, payload?.newRow],
+      };
+
+    case CLEAR_TEMINAL_ROWS:
+      return {
+        ...state,
+        terminalRows: DEFAULT_TERMINAL_ROWS,
       };
 
     default:

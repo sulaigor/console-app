@@ -45,6 +45,7 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 'off',
     'react-hooks/exhaustive-deps': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
       {

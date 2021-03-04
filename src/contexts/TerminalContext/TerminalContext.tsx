@@ -1,7 +1,13 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { IChildrenProps as IProps } from 'types/props';
+import { isClearCommand } from 'utils/commands';
 import terminalReducer, { initialState } from './terminalReducer';
-import { addTerminalRowAction, resetInputValueAction, setInputValueAction } from './terminalReducer/actions';
+import {
+  addTerminalRowAction,
+  clearTerminalRowsAction,
+  resetInputValueAction,
+  setInputValueAction,
+} from './terminalReducer/actions';
 import { TerminalContextType } from './types';
 
 const Context = createContext<TerminalContextType>({
@@ -18,7 +24,9 @@ const TerminalContext = ({ children }: IProps) => {
 
   const addTerminalRow = () => {
     const { inputValue } = reducerState;
-    dispatch(addTerminalRowAction({ value: inputValue }));
+
+    if (isClearCommand(inputValue)) dispatch(clearTerminalRowsAction());
+    else dispatch(addTerminalRowAction({ value: inputValue }));
     resetInputValue();
   };
 

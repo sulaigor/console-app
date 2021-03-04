@@ -1,5 +1,6 @@
 import { IReducerAction } from 'types/reducer';
-import { SET_INPUT_VALUE } from './actionTypes';
+import { RESET_INPUT_VALUE, SET_INPUT_VALUE } from './actionTypes';
+import { DEFAULT_INPUT_VALUE } from './const';
 import { IReducerState } from './types';
 
 const terminalReducer = (state: IReducerState, action: IReducerAction): IReducerState => {
@@ -10,6 +11,12 @@ const terminalReducer = (state: IReducerState, action: IReducerAction): IReducer
       return {
         ...state,
         inputValue: payload?.newValue,
+      };
+
+    case RESET_INPUT_VALUE:
+      return {
+        ...state,
+        inputValue: DEFAULT_INPUT_VALUE,
       };
 
     default:

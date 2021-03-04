@@ -1,13 +1,13 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { IChildrenProps as IProps } from 'types/props';
 import terminalReducer, { initialState } from './terminalReducer';
-import { resetInputValueAction, setInputValueAction } from './terminalReducer/actions';
+import { addTerminalRowAction, resetInputValueAction, setInputValueAction } from './terminalReducer/actions';
 import { TerminalContextType } from './types';
 
 const Context = createContext<TerminalContextType>({
   ...initialState,
   setInputValue: () => null,
-  resetInputValue: () => null,
+  addTerminalRow: () => null,
 });
 
 const TerminalContext = ({ children }: IProps) => {
@@ -16,10 +16,16 @@ const TerminalContext = ({ children }: IProps) => {
   const setInputValue = (newValue: string) => dispatch(setInputValueAction(newValue));
   const resetInputValue = () => dispatch(resetInputValueAction());
 
+  const addTerminalRow = () => {
+    const { inputValue } = reducerState;
+    dispatch(addTerminalRowAction({ value: inputValue }));
+    resetInputValue();
+  };
+
   const contextValue: TerminalContextType = {
     ...reducerState,
     setInputValue,
-    resetInputValue,
+    addTerminalRow,
   };
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;

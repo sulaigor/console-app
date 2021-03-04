@@ -41,6 +41,8 @@ module.exports = {
     'no-debugger': 'error',
     'no-alert': 'error',
     'no-unused-vars': 'off',
+    'jsx-a11y/no-autofocus': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
     'react-hooks/exhaustive-deps': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-unused-vars': [

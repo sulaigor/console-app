@@ -28,3 +28,6 @@ yarn-error.log*
 
 # ENV variables
 .env
+
+# react-scipts
+react-app-env.d.ts

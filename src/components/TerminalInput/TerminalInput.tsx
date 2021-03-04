@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import { useTerminalContext } from 'contexts/TerminalContext';
+import TerminalLabel from 'components/TerminalLabel';
 import css from './terminalInput.module.scss';
 
 function TerminalInput() {
@@ -9,11 +10,8 @@ function TerminalInput() {
 
   return (
     <div className={css.terminalInputWrapper}>
-      <label htmlFor='terminal-input' className={css.terminalLabel}>
-        igorsula@web-page
-      </label>
+      <TerminalLabel />
       <input
-        id='terminal-input'
         autoFocus
         className={css.terminalInput}
         type='text'

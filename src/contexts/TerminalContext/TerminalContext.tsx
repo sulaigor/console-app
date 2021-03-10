@@ -2,6 +2,7 @@ import React, { createContext, useContext, useReducer } from 'react';
 import { IChildrenProps as IProps } from 'types/props';
 import { TerminalRow } from 'models/TerminalRow';
 import { isClearCommand } from 'utils/commands';
+import { dummyFunction } from 'utils/dummy';
 import terminalReducer, { initialState } from './terminalReducer';
 import {
   addTerminalRowAction,
@@ -13,8 +14,9 @@ import { TerminalContextType } from './types';
 
 const Context = createContext<TerminalContextType>({
   ...initialState,
-  setInputValue: () => null,
-  addTerminalRow: () => null,
+  setInputValue: dummyFunction,
+  addTerminalRow: dummyFunction,
+  clearTerminal: dummyFunction,
 });
 
 const TerminalContext = ({ children }: IProps) => {
@@ -22,11 +24,12 @@ const TerminalContext = ({ children }: IProps) => {
 
   const setInputValue = (newValue: string) => dispatch(setInputValueAction(newValue));
   const resetInputValue = () => dispatch(resetInputValueAction());
+  const clearTerminal = () => dispatch(clearTerminalAction());
 
   const addTerminalRow = () => {
     const { inputValue } = reducerState;
 
-    if (isClearCommand(inputValue)) dispatch(clearTerminalAction());
+    if (isClearCommand(inputValue)) clearTerminal();
     else {
       const terminalRow = new TerminalRow(inputValue);
       dispatch(addTerminalRowAction(terminalRow));
@@ -38,6 +41,7 @@ const TerminalContext = ({ children }: IProps) => {
     ...reducerState,
     setInputValue,
     addTerminalRow,
+    clearTerminal,
   };
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;

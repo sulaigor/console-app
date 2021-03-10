@@ -1,5 +1,5 @@
 import { IReducerAction } from 'types/reducer';
-import { ITerminalRow } from 'types/terminal';
+import { ITerminalRow } from 'models/TerminalRow';
 import { ADD_TERMINAL_ROW, CLEAR_TERMINAL, RESET_INPUT_VALUE, SET_INPUT_VALUE } from './actionTypes';
 
 export const setInputValueAction = (newValue: string): IReducerAction => ({

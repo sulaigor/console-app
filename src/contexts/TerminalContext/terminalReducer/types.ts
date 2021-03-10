@@ -1,4 +1,4 @@
-import { ITerminalRow } from 'types/terminal';
+import { ITerminalRow } from 'models/TerminalRow';
 
 export interface IReducerState {
   inputValue: string;

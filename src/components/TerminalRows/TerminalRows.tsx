@@ -10,7 +10,7 @@ const TerminalRows = () => {
   return (
     <ul className={css.rowsList}>
       {terminalRows.map((row, index) => (
-        <li className={css.rowItem} key={`terminal-row-item-${row.value}-${index}`}>
+        <li className={css.rowItem} key={`terminal-row-item-${row.input}-${index}`}>
           <TerminalRow {...row} />
         </li>
       ))}

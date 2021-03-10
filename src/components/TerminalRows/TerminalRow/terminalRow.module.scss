@@ -1,8 +1,13 @@
 .rowWrapper {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.rowValue {
+.row {
   margin: 0;
+}
+
+.outputRow {
+  width: 100%;
 }

@@ -4,7 +4,7 @@ import { isClearCommand } from 'utils/commands';
 import terminalReducer, { initialState } from './terminalReducer';
 import {
   addTerminalRowAction,
-  clearTerminalRowsAction,
+  clearTerminalAction,
   resetInputValueAction,
   setInputValueAction,
 } from './terminalReducer/actions';
@@ -25,7 +25,7 @@ const TerminalContext = ({ children }: IProps) => {
   const addTerminalRow = () => {
     const { inputValue } = reducerState;
 
-    if (isClearCommand(inputValue)) dispatch(clearTerminalRowsAction());
+    if (isClearCommand(inputValue)) dispatch(clearTerminalAction());
     else dispatch(addTerminalRowAction({ value: inputValue }));
     resetInputValue();
   };

@@ -1,0 +1,32 @@
+@import 'assets/styles/const/colors';
+
+.btn {
+  padding: 0.15em 1em 0.1em;
+  color: $modalFontColor;
+  border: none;
+  border-radius: 0.2em;
+
+  & + & {
+    margin-left: 1em;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.primary {
+  background: $primaryButtonBgColor;
+
+  &:focus {
+    background: lighten($primaryButtonBgColor, 10%);
+  }
+}
+
+.secondary {
+  background: $secondaryButtonBgColor;
+
+  &:focus {
+    background: lighten($secondaryButtonBgColor, 10%);
+  }
+}

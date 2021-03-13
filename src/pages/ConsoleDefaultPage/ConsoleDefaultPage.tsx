@@ -2,9 +2,9 @@ import React, { useRef } from 'react';
 import { useTerminalClear } from 'hooks/useTerminalClear';
 import TerminalInput from 'components/TerminalInput';
 import TerminalRows from 'components/TerminalRows';
-import css from './consoleWindow.module.scss';
+import css from './consoleDefaultPage.module.scss';
 
-const ConsoleWindow = () => {
+const ConsoleDefaultPage = () => {
   useTerminalClear();
   const terminalInputRef = useRef<HTMLInputElement>(null);
 
@@ -18,4 +18,4 @@ const ConsoleWindow = () => {
   );
 };
 
-export default ConsoleWindow;
+export default ConsoleDefaultPage;

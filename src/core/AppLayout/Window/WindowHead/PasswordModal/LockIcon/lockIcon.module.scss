@@ -1,0 +1,58 @@
+@import 'assets/styles/const/colors';
+
+$skewValue: 25deg;
+$positionValue: 0.1em;
+
+.lockIcon {
+  position: relative;
+  display: block;
+  width: 3em;
+  height: 2em;
+  text-indent: -9999px;
+}
+
+.lockBody {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  background: $lockIconBgColor;
+  border-radius: 0.1em 0.1em 0.25em 0.25em;
+  z-index: 2;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: $positionValue;
+    width: 0.5em;
+    height: calc(100% - #{2 * $positionValue});
+    background: darken($lockIconBgColor, 20%);
+  }
+
+  &:before {
+    left: $positionValue;
+    transform: skewY($skewValue);
+  }
+
+  &:after {
+    right: $positionValue;
+    transform: skewY(-$skewValue);
+  }
+}
+
+.lockShackle {
+  position: absolute;
+  display: block;
+  width: 2.25em;
+  height: 3em;
+  bottom: calc(100% - 1.5em);
+  left: 50%;
+  border: 0.5em solid $lockIconBorderColor;
+  border-radius: 4em;
+  z-index: 1;
+
+  transform: translateX(-50%);
+}

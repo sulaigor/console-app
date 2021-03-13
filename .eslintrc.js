@@ -41,6 +41,7 @@ module.exports = {
     'no-debugger': 'error',
     'no-alert': 'error',
     'no-unused-vars': 'off',
+    'no-shadow': 'off',
     'jsx-a11y/no-autofocus': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
@@ -49,6 +50,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/no-unused-vars': [
       'error',
       {

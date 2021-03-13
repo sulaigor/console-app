@@ -1,0 +1,36 @@
+@import 'assets/styles/const/colors';
+
+.closeBtn {
+  position: relative;
+  display: block;
+  width: 11px;
+  height: 11px;
+  left: 0.5em;
+  top: 0.3em;
+  padding: 0;
+  background: $closeBtnBgColor;
+  border: none;
+  border-radius: 50%;
+  text-indent: -9999px;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:after {
+    content: '+';
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    color: $closeBtnColor;
+    text-indent: 0;
+
+    transform: rotate(45deg);
+  }
+}

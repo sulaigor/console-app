@@ -1,11 +1,14 @@
 import React from 'react';
 import ContextProvider from 'core/ContextProvider';
-import ConsoleWindow from 'core/ConsoleWindow';
+import AppLayout from 'core/AppLayout';
+import MainRouter from 'core/MainRouter';
 
 const App = () => {
   return (
     <ContextProvider>
-      <ConsoleWindow />
+      <AppLayout>
+        <MainRouter />
+      </AppLayout>
     </ContextProvider>
   );
 };

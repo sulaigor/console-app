@@ -11,7 +11,7 @@ const Window = ({ children, className }: IProps) => {
   return (
     <div className={classnames(css.terminalWindow, className)}>
       <header className={css.terminalHead}>console-app</header>
-      {children}
+      <div className={css.terminalContent}>{children}</div>
     </div>
   );
 };

@@ -11,10 +11,10 @@ const ConsoleWindow = () => {
   const handleTerminalClick = () => terminalInputRef.current?.focus();
 
   return (
-    <main className={css.mainContainer} onClick={handleTerminalClick}>
+    <section className={css.mainContainer} onClick={handleTerminalClick}>
       <TerminalRows />
       <TerminalInput inputRef={terminalInputRef} />
-    </main>
+    </section>
   );
 };
 

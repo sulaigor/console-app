@@ -29,3 +29,7 @@ body {
     height: 100%;
   }
 }
+
+::selection {
+  background: rgba($mainFontColor, 0.2);
+}

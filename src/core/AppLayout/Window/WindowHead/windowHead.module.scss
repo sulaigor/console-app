@@ -1,8 +1,9 @@
 @import 'assets/styles/const/colors';
 
 .terminalHead {
+  position: relative;
   font-size: 0.8em;
-  padding: 0.05em 0 0.125em;
+  padding: 0.05em 2em 0.125em;
   color: $terminalFontColor;
   background: $terminalHeadBgColor;
   border-bottom: 1px solid $terminalBorderColor;
@@ -11,5 +12,19 @@
 
   &::selection {
     background: transparent;
+  }
+
+  .closeBtn {
+    position: absolute;
+    left: 0.5em;
+    top: 0.3em;
+  }
+
+  .passwordModal {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+
+    transform: translateX(-50%);
   }
 }

@@ -29,6 +29,12 @@
   }
 }
 
+input.formInput {
+  &::selection {
+    background: $modalInputFocusColor;
+  }
+}
+
 .fakeInput {
   cursor: not-allowed;
 }

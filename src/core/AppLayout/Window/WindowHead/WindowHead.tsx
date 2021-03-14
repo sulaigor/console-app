@@ -17,8 +17,8 @@ const WindowHead = ({ title = DEFAULT_TERMINAL_TITLE }: IProps) => {
   return (
     <header className={css.terminalHead}>
       <CloseButton className={css.closeBtn} onClick={hadnleCloseBtnClick} />
-      {title}
-      {isModalVisible && <PasswordModal className={css.passwordModal} onClose={handleCloseModal} />}
+      <div className={css.headContent}>{title}</div>
+      <PasswordModal visible={isModalVisible} className={css.passwordModal} onClose={handleCloseModal} />
     </header>
   );
 };

@@ -1,6 +1,13 @@
 import { IReducerAction } from 'types/reducer';
 import { ITerminalRow } from 'models/TerminalRow';
-import { ADD_TERMINAL_ROW, CLEAR_TERMINAL, RESET_INPUT_VALUE, SET_INPUT_VALUE } from './actionTypes';
+import {
+  ADD_TERMINAL_HISTORY,
+  ADD_TERMINAL_ROW,
+  CLEAR_TERMINAL,
+  RESET_INPUT_VALUE,
+  SET_INPUT_VALUE,
+  SET_TERMINAL_HISTORY,
+} from './actionTypes';
 
 export const setInputValueAction = (newValue: string): IReducerAction => ({
   type: SET_INPUT_VALUE,
@@ -18,4 +25,14 @@ export const addTerminalRowAction = (newRow: ITerminalRow): IReducerAction => ({
 
 export const clearTerminalAction = (): IReducerAction => ({
   type: CLEAR_TERMINAL,
+});
+
+export const setTerminalHistoryAction = (newTerminalHistory: string[]): IReducerAction => ({
+  type: SET_TERMINAL_HISTORY,
+  payload: { newTerminalHistory },
+});
+
+export const addTerminalHistoryAction = (newItem: string): IReducerAction => ({
+  type: ADD_TERMINAL_HISTORY,
+  payload: { newItem },
 });

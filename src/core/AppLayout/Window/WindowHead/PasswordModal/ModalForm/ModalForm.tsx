@@ -1,13 +1,15 @@
-import React, { FormEvent } from 'react';
+import React, { ChangeEvent, FormEvent } from 'react';
 import classNames from 'classnames';
 import { USER_NAME } from 'const/webPage';
 import css from './modalForm.module.scss';
 
 interface IProps {
+  passwordValue: string;
+  onPasswordChange: (event: ChangeEvent<HTMLInputElement>) => void;
   onConfirm: () => void;
 }
 
-const ModalForm = ({ onConfirm }: IProps) => {
+const ModalForm = ({ passwordValue, onPasswordChange, onConfirm }: IProps) => {
   const handleModalConfirm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onConfirm();
@@ -21,7 +23,13 @@ const ModalForm = ({ onConfirm }: IProps) => {
       </label>
       <label className={css.formLabel}>
         Password:
-        <input autoFocus className={css.formInput} type='password' />
+        <input
+          autoFocus
+          className={css.formInput}
+          type='password'
+          value={passwordValue}
+          onChange={onPasswordChange}
+        />
       </label>
     </form>
   );

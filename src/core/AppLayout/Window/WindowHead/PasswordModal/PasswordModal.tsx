@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import LockIcon from './LockIcon';
@@ -14,7 +14,15 @@ interface IProps {
 }
 
 const PasswordModal = ({ visible, className, onClose }: IProps) => {
-  const handleModalConfirm = () => null;
+  const [password, setPassword] = useState('');
+  const [isConfirmTriggered, setConfirmTrigger] = useState(false);
+
+  const handlePasswordChange = ({ target }: ChangeEvent<HTMLInputElement>) => setPassword(target.value);
+  const handleModalConfirm = () => setConfirmTrigger(true);
+  const handleConfirmAnimEnd = () => {
+    setConfirmTrigger(false);
+    setPassword('');
+  };
 
   return (
     <CSSTransition
@@ -28,10 +36,17 @@ const PasswordModal = ({ visible, className, onClose }: IProps) => {
       }}
       unmountOnExit
     >
-      <div className={classNames(css.passwordModal, className)}>
+      <div
+        className={classNames(css.passwordModal, className, { [css.confirmAnim]: isConfirmTriggered })}
+        onAnimationEnd={handleConfirmAnimEnd}
+      >
         <LockIcon className={css.lockIcon} />
         <ModalBody />
-        <ModalForm onConfirm={handleModalConfirm} />
+        <ModalForm
+          passwordValue={password}
+          onPasswordChange={handlePasswordChange}
+          onConfirm={handleModalConfirm}
+        />
         <ModalFooter onClose={onClose} onConfirm={handleModalConfirm} />
       </div>
     </CSSTransition>

@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import bgImage from 'assets/images/white_stripes.jpg';
+import terminalBackground from 'assets/images/terminalBackground.json';
 import css from './background.module.scss';
 
 interface IProps {
@@ -9,7 +9,10 @@ interface IProps {
 
 const Background = ({ className }: IProps) => {
   return (
-    <div style={{ backgroundImage: `url("${bgImage}")` }} className={classnames(css.bgImage, className)} />
+    <div
+      style={{ backgroundImage: `url("${terminalBackground.data}")` }}
+      className={classnames(css.bgImage, className)}
+    />
   );
 };
 

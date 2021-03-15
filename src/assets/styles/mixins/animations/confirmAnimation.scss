@@ -1,0 +1,43 @@
+@mixin confirmAnimation($duration: 2s, $animTranslate: 10px, $opacity: 0.6) {
+  animation: confirmAnim $duration linear 1;
+
+  @keyframes confirmAnim {
+    0% {
+      opacity: $opacity;
+    }
+    72% {
+      opacity: $opacity;
+    }
+    73% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    76% {
+      transform: translateX($animTranslate);
+    }
+    79% {
+      transform: translateX(-$animTranslate);
+    }
+    82% {
+      transform: translateX($animTranslate);
+    }
+    85% {
+      transform: translateX(-$animTranslate);
+    }
+    88% {
+      transform: translateX($animTranslate);
+    }
+    91% {
+      transform: translateX(-$animTranslate);
+    }
+    94% {
+      transform: translateX($animTranslate);
+    }
+    97% {
+      transform: translateX(-$animTranslate);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+}

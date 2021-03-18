@@ -7,4 +7,5 @@ export const initialState: IReducerState = {
   inputValue: DEFAULT_INPUT_VALUE,
   terminalRows: DEFAULT_TERMINAL_ROWS,
   terminalHistory: [],
+  historyIndex: 0,
 };

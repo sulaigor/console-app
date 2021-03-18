@@ -4,6 +4,8 @@ import {
   ADD_TERMINAL_HISTORY,
   ADD_TERMINAL_ROW,
   CLEAR_TERMINAL,
+  DECREASE_HISTORY_INDEX,
+  INCREASE_HISTORY_INDEX,
   RESET_INPUT_VALUE,
   SET_INPUT_VALUE,
   SET_TERMINAL_HISTORY,
@@ -35,4 +37,12 @@ export const setTerminalHistoryAction = (newTerminalHistory: string[]): IReducer
 export const addTerminalHistoryAction = (newItem: string): IReducerAction => ({
   type: ADD_TERMINAL_HISTORY,
   payload: { newItem },
+});
+
+export const increaseHistoryIndexAction = (): IReducerAction => ({
+  type: INCREASE_HISTORY_INDEX,
+});
+
+export const decreaseHistoryIndexAction = (): IReducerAction => ({
+  type: DECREASE_HISTORY_INDEX,
 });

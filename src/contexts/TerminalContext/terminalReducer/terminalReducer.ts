@@ -3,6 +3,8 @@ import {
   ADD_TERMINAL_HISTORY,
   ADD_TERMINAL_ROW,
   CLEAR_TERMINAL,
+  DECREASE_HISTORY_INDEX,
+  INCREASE_HISTORY_INDEX,
   RESET_INPUT_VALUE,
   SET_INPUT_VALUE,
   SET_TERMINAL_HISTORY,
@@ -48,6 +50,18 @@ const terminalReducer = (state: IReducerState, action: IReducerAction): IReducer
       return {
         ...state,
         terminalHistory: [...state.terminalHistory, payload?.newItem],
+      };
+
+    case INCREASE_HISTORY_INDEX:
+      return {
+        ...state,
+        historyIndex: Math.min(state.historyIndex + 1, state.terminalHistory.length),
+      };
+
+    case DECREASE_HISTORY_INDEX:
+      return {
+        ...state,
+        historyIndex: Math.max(state.historyIndex - 1, 0),
       };
 
     default:

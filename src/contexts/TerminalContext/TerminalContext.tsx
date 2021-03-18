@@ -9,6 +9,8 @@ import {
   addTerminalHistoryAction,
   addTerminalRowAction,
   clearTerminalAction,
+  decreaseHistoryIndexAction,
+  increaseHistoryIndexAction,
   resetInputValueAction,
   setInputValueAction,
   setTerminalHistoryAction,
@@ -21,6 +23,8 @@ const Context = createContext<TerminalContextType>({
   setInputValue: dummyFunction,
   addTerminalRow: dummyFunction,
   clearTerminal: dummyFunction,
+  increaseHistoryIndex: dummyFunction,
+  decreaseHistoryIndex: dummyFunction,
 });
 
 const TerminalContext = ({ children }: IProps) => {
@@ -34,6 +38,9 @@ const TerminalContext = ({ children }: IProps) => {
   const setInputValue = (newValue: string) => dispatch(setInputValueAction(newValue));
   const resetInputValue = () => dispatch(resetInputValueAction());
   const clearTerminal = () => dispatch(clearTerminalAction());
+  const increaseHistoryIndex = () => dispatch(increaseHistoryIndexAction());
+  const decreaseHistoryIndex = () => dispatch(decreaseHistoryIndexAction());
+
   const addTerminalHistory = (newHistoryItem: string) => {
     if (newHistoryItem) {
       dispatch(addTerminalHistoryAction(newHistoryItem));
@@ -65,6 +72,8 @@ const TerminalContext = ({ children }: IProps) => {
     setInputValue,
     addTerminalRow,
     clearTerminal,
+    increaseHistoryIndex,
+    decreaseHistoryIndex,
   };
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;

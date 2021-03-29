@@ -12,7 +12,7 @@ export class TerminalRow implements ITerminalRow {
   public command: string;
 
   constructor(input: string) {
-    this.input = input;
+    this.input = input.trim();
     this.output = getNotFoundOutput(this.input);
     this.command = getCommand(this.input);
   }

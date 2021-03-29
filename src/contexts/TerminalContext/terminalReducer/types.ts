@@ -1,8 +1,12 @@
 import { ITerminalRow } from 'models/TerminalRow';
 
+export type InputValueType = string;
+export type HistoryIndexType = number;
+
 export interface IReducerState {
-  inputValue: string;
+  inputValue: InputValueType;
+  cachedInputValue: InputValueType;
   terminalRows: ITerminalRow[];
-  terminalHistory: string[];
-  historyIndex: number;
+  terminalHistory: InputValueType[];
+  historyIndex: HistoryIndexType;
 }

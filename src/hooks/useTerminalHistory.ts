@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { useTerminalContext } from 'contexts/TerminalContext';
+import { useKeyboardEvent } from 'hooks/useKeyboardEvent';
 
 enum ArrowKeys {
   ARROW_UP = 'ArrowUp',
@@ -9,8 +9,9 @@ enum ArrowKeys {
 export const useTerminalHistory = () => {
   const { increaseHistoryIndex, decreaseHistoryIndex } = useTerminalContext();
 
-  useEffect(() => {
-    const handleKeyDown = ({ key }: KeyboardEvent) => {
+  useKeyboardEvent(
+    'keydown',
+    ({ key }) => {
       if (key === ArrowKeys.ARROW_UP) {
         increaseHistoryIndex();
       }
@@ -18,9 +19,7 @@ export const useTerminalHistory = () => {
       if (key === ArrowKeys.ARROW_DOWN) {
         decreaseHistoryIndex();
       }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [increaseHistoryIndex, decreaseHistoryIndex]);
+    },
+    [increaseHistoryIndex, decreaseHistoryIndex]
+  );
 };

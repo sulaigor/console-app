@@ -1,15 +1,14 @@
 import { IReducerAction } from 'types/reducer';
 import {
-  ADD_TERMINAL_HISTORY,
   ADD_TERMINAL_ROW,
   CLEAR_TERMINAL,
-  DECREASE_HISTORY_INDEX,
-  INCREASE_HISTORY_INDEX,
+  SET_HISTORY_INDEX,
   RESET_INPUT_VALUE,
   SET_INPUT_VALUE,
   SET_TERMINAL_HISTORY,
+  ADD_TERMINAL_HISTORY_ITEM,
 } from './actionTypes';
-import { DEFAULT_INPUT_VALUE, DEFAULT_TERMINAL_ROWS } from './const';
+import { DEFAULT_HISTORY_INDEX, DEFAULT_INPUT_VALUE, DEFAULT_TERMINAL_ROWS } from './const';
 import { IReducerState } from './types';
 
 const terminalReducer = (state: IReducerState, action: IReducerAction): IReducerState => {
@@ -20,12 +19,15 @@ const terminalReducer = (state: IReducerState, action: IReducerAction): IReducer
       return {
         ...state,
         inputValue: payload?.newValue,
+        cachedInputValue: payload?.newValue,
       };
 
     case RESET_INPUT_VALUE:
       return {
         ...state,
         inputValue: DEFAULT_INPUT_VALUE,
+        cachedInputValue: DEFAULT_INPUT_VALUE,
+        historyIndex: DEFAULT_HISTORY_INDEX,
       };
 
     case ADD_TERMINAL_ROW:
@@ -40,28 +42,26 @@ const terminalReducer = (state: IReducerState, action: IReducerAction): IReducer
         terminalRows: DEFAULT_TERMINAL_ROWS,
       };
 
+    case ADD_TERMINAL_HISTORY_ITEM:
+      return {
+        ...state,
+        terminalHistory: [payload?.newHistoryItem, ...state.terminalHistory],
+      };
+
     case SET_TERMINAL_HISTORY:
       return {
         ...state,
-        terminalHistory: payload?.newTerminalHistory,
+        terminalHistory: [...payload?.newTerminalHistory],
       };
 
-    case ADD_TERMINAL_HISTORY:
+    case SET_HISTORY_INDEX:
       return {
         ...state,
-        terminalHistory: [...state.terminalHistory, payload?.newItem],
-      };
-
-    case INCREASE_HISTORY_INDEX:
-      return {
-        ...state,
-        historyIndex: Math.min(state.historyIndex + 1, state.terminalHistory.length),
-      };
-
-    case DECREASE_HISTORY_INDEX:
-      return {
-        ...state,
-        historyIndex: Math.max(state.historyIndex - 1, 0),
+        historyIndex: payload?.newIndex,
+        inputValue:
+          payload?.newIndex === DEFAULT_HISTORY_INDEX
+            ? state.cachedInputValue
+            : state.terminalHistory[payload?.newIndex - 1],
       };
 
     default:

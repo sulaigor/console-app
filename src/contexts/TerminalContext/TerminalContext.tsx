@@ -1,19 +1,19 @@
-import React, { createContext, useContext, useEffect, useReducer } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useReducer } from 'react';
 import { IChildrenProps as IProps } from 'types/props';
 import { TerminalRow } from 'models/TerminalRow';
 import { isClearCommand } from 'utils/commands';
 import { dummyFunction } from 'utils/dummy';
 import { setItem, loadItem } from 'utils/localStorage';
 import terminalReducer, { initialState } from './terminalReducer';
+import { DEFAULT_HISTORY_INDEX } from './terminalReducer/const';
 import {
-  addTerminalHistoryAction,
   addTerminalRowAction,
   clearTerminalAction,
-  decreaseHistoryIndexAction,
-  increaseHistoryIndexAction,
+  setHistoryIndexAction,
   resetInputValueAction,
   setInputValueAction,
   setTerminalHistoryAction,
+  addTerminalHistoryItem,
 } from './terminalReducer/actions';
 import { TERMINAL_HISTORY_KEY } from './const';
 import { TerminalContextType } from './types';
@@ -29,34 +29,45 @@ const Context = createContext<TerminalContextType>({
 
 const TerminalContext = ({ children }: IProps) => {
   const [reducerState, dispatch] = useReducer(terminalReducer, initialState);
-  const { terminalHistory } = reducerState;
+  const { historyIndex, terminalHistory } = reducerState;
 
   useEffect(() => loadTerminalHistory(), []);
   useEffect(() => setItem(TERMINAL_HISTORY_KEY, JSON.stringify(terminalHistory)), [terminalHistory]);
 
   const setHistory = (newTerminalHistory: string[]) => dispatch(setTerminalHistoryAction(newTerminalHistory));
   const setInputValue = (newValue: string) => dispatch(setInputValueAction(newValue));
-  const resetInputValue = () => dispatch(resetInputValueAction());
   const clearTerminal = () => dispatch(clearTerminalAction());
-  const increaseHistoryIndex = () => dispatch(increaseHistoryIndexAction());
-  const decreaseHistoryIndex = () => dispatch(decreaseHistoryIndexAction());
+  const resetInputValue = () => dispatch(resetInputValueAction());
 
-  const addTerminalHistory = (newHistoryItem: string) => {
-    if (newHistoryItem) {
-      dispatch(addTerminalHistoryAction(newHistoryItem));
+  const setHistoryIndex = (newIndex: number) => {
+    if (newIndex !== historyIndex) {
+      dispatch(setHistoryIndexAction(newIndex));
     }
   };
+
+  const increaseHistoryIndex = useCallback(
+    () => setHistoryIndex(Math.min(historyIndex + 1, terminalHistory.length)),
+    [historyIndex, terminalHistory]
+  );
+
+  const decreaseHistoryIndex = useCallback(
+    () => setHistoryIndex(Math.max(historyIndex - 1, DEFAULT_HISTORY_INDEX)),
+    [historyIndex]
+  );
 
   const addTerminalRow = () => {
     const { inputValue } = reducerState;
 
-    if (isClearCommand(inputValue)) clearTerminal();
-    else {
+    if (isClearCommand(inputValue)) {
+      clearTerminal();
+    } else {
       const terminalRow = new TerminalRow(inputValue);
-      const { command } = terminalRow;
-      addTerminalHistory(command);
       dispatch(addTerminalRowAction(terminalRow));
+
+      const { input } = terminalRow;
+      if (input) dispatch(addTerminalHistoryItem(input));
     }
+
     resetInputValue();
   };
 

@@ -1,4 +1,5 @@
 @import 'assets/styles/const/colors';
+@import 'assets/styles/mixins/utils/terminalScroll';
 
 .terminalWindow {
   display: flex;
@@ -13,10 +14,14 @@
 
 .terminalContent {
   flex-grow: 1;
+  max-height: 100%;
   padding: 0 0.25em;
+  overflow-y: scroll;
+
+  @include terminalScroll;
 
   > * {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
   }
 }

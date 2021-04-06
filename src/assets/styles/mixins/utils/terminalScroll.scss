@@ -1,0 +1,18 @@
+@import 'assets/styles/const/colors';
+
+@mixin terminalScroll {
+  &::-webkit-scrollbar {
+    width: 0.75em;
+    background: $terminalHeadBgColor;
+  }
+
+  &::-webkit-scrollbar-track {
+    padding: 1em;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $terminalFontColor;
+    border: 3px solid $terminalHeadBgColor;
+    border-radius: 1em;
+  }
+}

@@ -5,9 +5,9 @@ import TerminalInput from 'components/TerminalInput';
 import TerminalRows from 'components/TerminalRows';
 
 const ConsoleDefaultPage = () => {
+  const terminalInputRef = useRef<HTMLInputElement>(null);
   useTerminalClear();
   useTerminalHistory();
-  const terminalInputRef = useRef<HTMLInputElement>(null);
 
   const handleTerminalClick = () => terminalInputRef.current?.focus();
 

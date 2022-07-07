@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "classnames": "^2.3.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
     "react-transition-group": "^4.4.2"
@@ -24,8 +24,8 @@
   "devDependencies": {
     "@types/classnames": "^2.3.1",
     "@types/node": "^16.11.43",
-    "@types/react": "^17.0.47",
-    "@types/react-dom": "^17.0.17",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
     "@types/react-router-dom": "^5.3.3",
     "@types/react-transition-group": "^4.4.5",
     "@typescript-eslint/eslint-plugin": "^5.30.5",

@@ -1,4 +1,3 @@
-import React from 'react';
 import classnames from 'classnames';
 import { IChildrenProps } from 'types/props';
 import { useResizeEvent } from './hooks';

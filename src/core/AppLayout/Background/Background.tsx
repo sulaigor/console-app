@@ -1,4 +1,3 @@
-import React from 'react';
 import classnames from 'classnames';
 import terminalBackground from 'assets/images/terminalBackground.json';
 import css from './background.module.scss';

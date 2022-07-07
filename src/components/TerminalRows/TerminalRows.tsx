@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTerminalContext } from 'contexts/TerminalContext';
 import TerminalRow from './TerminalRow';
 import css from './terminalRows.module.scss';

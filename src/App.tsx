@@ -1,4 +1,3 @@
-import React from 'react';
 import ContextProvider from 'core/ContextProvider';
 import AppLayout from 'core/AppLayout';
 import MainRouter from 'core/MainRouter';

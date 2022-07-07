@@ -1,4 +1,3 @@
-import React from 'react';
 import css from './modalBody.module.scss';
 
 const ModalBody = () => {

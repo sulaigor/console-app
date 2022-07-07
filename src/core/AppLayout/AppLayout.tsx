@@ -1,4 +1,3 @@
-import React from 'react';
 import { IChildrenProps as IProps } from 'types/props';
 import Background from './Background';
 import Window from './Window';

@@ -78,6 +78,7 @@ module.exports = {
     'no-use-before-define': 'off',
     'global-require': 'off',
     'no-extra-parens': 'off',
+    'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
     'react/function-component-definition': 'off',
     'react/no-unused-prop-types': 'off',

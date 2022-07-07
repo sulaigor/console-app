@@ -42,6 +42,8 @@ module.exports = {
     'no-alert': 'error',
     'no-unused-vars': 'off',
     'no-shadow': 'off',
+    'no-unsafe-optional-chaining': 'off',
+    'no-restricted-exports': 'off',
     'jsx-a11y/no-autofocus': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
@@ -77,10 +79,12 @@ module.exports = {
     'global-require': 'off',
     'no-extra-parens': 'off',
     'react/require-default-props': 'off',
+    'react/function-component-definition': 'off',
     'react/no-unused-prop-types': 'off',
     'react/no-array-index-key': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/jsx-one-expression-per-line': 'off',
+    'react/jsx-no-constructed-context-values': 'off',
     'react/jsx-filename-extension': [
       'error',
       {

@@ -7,7 +7,7 @@ export const DEFAULT_HISTORY_INDEX = 0;
 export const DEFAULT_TERMINAL_ROWS = [];
 export const DEFAULT_TERMINAL_HISTORY = [];
 
-export const initialState: ITerminalReducerState = {
+export const terminalInitialState: ITerminalReducerState = {
   inputValue: DEFAULT_INPUT_VALUE,
   cachedInputValue: DEFAULT_INPUT_VALUE,
   terminalRows: DEFAULT_TERMINAL_ROWS,

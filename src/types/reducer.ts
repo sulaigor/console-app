@@ -3,4 +3,4 @@ export interface IReducerAction {
   payload?: Record<string, any>;
 }
 
-export type ReducerType<State> = (state: State, action: IReducerAction) => State;
+export type ReducerType<State> = (state: State | undefined, action: IReducerAction) => State;

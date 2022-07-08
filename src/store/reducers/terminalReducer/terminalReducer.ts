@@ -8,10 +8,17 @@ import {
   SET_TERMINAL_HISTORY,
   ADD_TERMINAL_HISTORY_ITEM,
 } from './actionTypes';
-import { DEFAULT_HISTORY_INDEX, DEFAULT_INPUT_VALUE, DEFAULT_TERMINAL_ROWS } from './const';
+import {
+  DEFAULT_HISTORY_INDEX,
+  DEFAULT_INPUT_VALUE,
+  DEFAULT_TERMINAL_ROWS,
+  terminalInitialState,
+} from './const';
 import { ITerminalReducerState } from './types';
 
-const terminalReducer: ReducerType<ITerminalReducerState> = (state, { type, payload }) => {
+export const terminalReducer: ReducerType<ITerminalReducerState> = (state = terminalInitialState, action) => {
+  const { type, payload } = action;
+
   switch (type) {
     case SET_INPUT_VALUE:
       return {
@@ -66,5 +73,3 @@ const terminalReducer: ReducerType<ITerminalReducerState> = (state, { type, payl
       return state;
   }
 };
-
-export default terminalReducer;

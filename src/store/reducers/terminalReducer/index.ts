@@ -1,3 +1,3 @@
-export { TERMINAL_REDUCER_NAME, initialState } from './const';
+export { TERMINAL_REDUCER_NAME, terminalInitialState } from './const';
 export type { ITerminalReducerState } from './types';
-export { default } from './terminalReducer';
+export { terminalReducer } from './terminalReducer';

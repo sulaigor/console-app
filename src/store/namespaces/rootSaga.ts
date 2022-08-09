@@ -1,5 +1,5 @@
 import { all, fork } from 'redux-saga/effects';
-import { rootTerminalSaga } from 'store/sagas/terminalSagas';
+import { rootTerminalSaga } from 'store/namespaces/terminal';
 
 // Create root redux saga
 export const rootSaga = function* () {

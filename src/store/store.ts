@@ -1,7 +1,6 @@
 import { applyMiddleware, legacy_createStore as createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { rootReducer } from 'store/reducers';
-import { rootSaga } from 'store/sagas';
+import { rootReducer, rootSaga } from 'store/namespaces';
 
 // Create a saga middleware
 const sagaMiddleware = createSagaMiddleware();

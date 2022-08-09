@@ -1,2 +1,2 @@
-export type { IStoreState } from './types';
+export type { IStoreState } from './namespaces';
 export { default } from './store';

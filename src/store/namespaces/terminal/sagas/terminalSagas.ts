@@ -1,6 +1,5 @@
 import { put, select } from 'redux-saga/effects';
 import { TERMINAL_HISTORY_KEY } from 'const/terminal';
-import { IStoreState } from 'store/namespaces';
 import { getItem, setItem } from 'utils/localStorage';
 import { TerminalRow } from 'models/TerminalRow';
 import { DefaultValues } from '../reducer/const';
@@ -11,22 +10,23 @@ import {
   setHistoryIndexAction,
   setTerminalHistoryAction,
 } from '../actions';
+import { selectHistoryIndex, selectInputValue, selectTerminalHistory } from '../selectors';
 
 export const increaseHistoryIndexSaga = function* () {
-  const terminalHistory: string[] = yield select((store: IStoreState) => store.terminal.terminalHistory);
-  const historyIndex: number = yield select((store: IStoreState) => store.terminal.historyIndex);
+  const terminalHistory: string[] = yield select(selectTerminalHistory);
+  const historyIndex: number = yield select(selectHistoryIndex);
 
   yield put(setHistoryIndexAction(Math.min(historyIndex + 1, terminalHistory.length)));
 };
 
 export const decreaseHistoryIndexSaga = function* () {
-  const historyIndex: number = yield select((store: IStoreState) => store.terminal.historyIndex);
+  const historyIndex: number = yield select(selectHistoryIndex);
 
   yield put(setHistoryIndexAction(Math.max(historyIndex - 1, DefaultValues.HISTORY_INDEX)));
 };
 
 export const addTerminalRowSaga = function* () {
-  const inputValue: string = yield select((store: IStoreState) => store.terminal.inputValue);
+  const inputValue: string = yield select(selectInputValue);
 
   const terminalRow = new TerminalRow(inputValue);
   yield put(addTerminalRowAction(terminalRow));
@@ -50,7 +50,7 @@ export const loadTerminalHistorySaga = function* () {
 };
 
 export const setTerminalHistorySaga = function* () {
-  const terminalHistory: string[] = yield select((store: IStoreState) => store.terminal.terminalHistory);
+  const terminalHistory: string[] = yield select(selectTerminalHistory);
   setItem(TERMINAL_HISTORY_KEY, JSON.stringify(terminalHistory));
 
   yield put(setTerminalHistoryAction(terminalHistory));

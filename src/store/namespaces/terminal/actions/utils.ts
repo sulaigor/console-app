@@ -1,5 +1,5 @@
 import { createActionType } from 'utils/reducer';
-import { TERMINAL_REDUCER_NAME, TERMINAL_SAGA_NAME } from '../const';
+import { TERMINAL_REDUCER_NAME, TERMINAL_SAGA_NAME } from './const';
 
 // Create action type with terminal reducer prefix
 export const createTerminalReducerActionType = (actionType: string): string =>

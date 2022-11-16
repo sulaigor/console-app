@@ -1,14 +1,21 @@
 @import 'assets/styles/const/colors';
+@import 'assets/styles/const/sizes';
+@import 'assets/styles/mixins/utils/fullSizeContent';
 @import 'assets/styles/mixins/utils/terminalScroll';
 
 .terminalWindow {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+  @include fullSizeContent($columnDirection);
+
   background-color: $mainBgColor;
+  border: 1px solid $mainBgColor;
+}
+
+.terminalWrapper {
+  @include fullSizeContent($columnDirection);
+
+  background: transparent;
   border: 1px solid $terminalBorderColor;
-  border-radius: 0.4em;
+  border-radius: $defaultBorderRad;
   overflow: hidden;
 }
 

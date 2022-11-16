@@ -13,9 +13,11 @@ const Window = ({ children, className }: IProps) => {
 
   return (
     <div className={classnames(css.terminalWindow, className)}>
-      <WindowHead />
-      <div ref={contentRef} className={css.terminalContent}>
-        {children}
+      <div className={css.terminalWrapper}>
+        <WindowHead />
+        <div ref={contentRef} className={css.terminalContent}>
+          {children}
+        </div>
       </div>
     </div>
   );

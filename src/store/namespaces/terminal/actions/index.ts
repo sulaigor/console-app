@@ -1,2 +1,2 @@
-export { ReducerActionTypes } from './actionTypes';
+export { ReducerActionTypes, SagasActionTypes } from './actionTypes';
 export * from './actions';

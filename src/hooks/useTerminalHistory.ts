@@ -1,5 +1,6 @@
-import { useTerminalContext } from 'contexts/TerminalContext';
+import { useDispatch } from 'react-redux';
 import { useKeyboardEvent } from 'hooks/useKeyboardEvent';
+import { decreaseHistoryIndexAction, increaseHistoryIndexAction } from 'store/namespaces/terminal/actions';
 
 enum ArrowKeys {
   ARROW_UP = 'ArrowUp',
@@ -7,19 +8,16 @@ enum ArrowKeys {
 }
 
 export const useTerminalHistory = () => {
-  const { increaseHistoryIndex, decreaseHistoryIndex } = useTerminalContext();
+  const dispatch = useDispatch();
 
   useKeyboardEvent(
     'keydown',
     ({ key }) => {
-      if (key === ArrowKeys.ARROW_UP) {
-        increaseHistoryIndex();
-      }
-
-      if (key === ArrowKeys.ARROW_DOWN) {
-        decreaseHistoryIndex();
-      }
+      // Increase history index
+      if (key === ArrowKeys.ARROW_UP) dispatch(increaseHistoryIndexAction());
+      // Decrease history index
+      if (key === ArrowKeys.ARROW_DOWN) dispatch(decreaseHistoryIndexAction());
     },
-    [increaseHistoryIndex, decreaseHistoryIndex]
+    [dispatch]
   );
 };

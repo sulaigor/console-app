@@ -1,27 +1,31 @@
 import {
-  SET_INPUT_VALUE,
-  RESET_INPUT_VALUE,
+  ADD_TERMINAL_HISTORY_ITEM,
   ADD_TERMINAL_ROW,
   CLEAR_TERMINAL,
-  ADD_TERMINAL_HISTORY_ITEM,
-  SET_TERMINAL_HISTORY,
-  SET_HISTORY_INDEX,
   DECREASE_HISTORY_INDEX,
   INCREASE_HISTORY_INDEX,
+  LOAD_HISTORY,
+  SET_INPUT_VALUE,
+  SET_TERMINAL_HISTORY,
+  SET_HISTORY_INDEX,
+  RESET_INPUT_VALUE,
+  CREATE_TERMINAL_ROW,
 } from './const';
 import { createTerminalReducerActionType, createTerminalSagaActionType } from './utils';
 
 export const ReducerActionTypes = {
-  SET_INPUT_VALUE: createTerminalSagaActionType(SET_INPUT_VALUE),
-  RESET_INPUT_VALUE: createTerminalSagaActionType(RESET_INPUT_VALUE),
-  ADD_TERMINAL_ROW: createTerminalSagaActionType(ADD_TERMINAL_ROW),
-  CLEAR_TERMINAL: createTerminalSagaActionType(CLEAR_TERMINAL),
-  ADD_TERMINAL_HISTORY_ITEM: createTerminalSagaActionType(ADD_TERMINAL_HISTORY_ITEM),
-  SET_TERMINAL_HISTORY: createTerminalSagaActionType(SET_TERMINAL_HISTORY),
-  SET_HISTORY_INDEX: createTerminalSagaActionType(SET_HISTORY_INDEX),
+  ADD_TERMINAL_HISTORY_ITEM: createTerminalReducerActionType(ADD_TERMINAL_HISTORY_ITEM),
+  ADD_TERMINAL_ROW: createTerminalReducerActionType(ADD_TERMINAL_ROW),
+  CLEAR_TERMINAL: createTerminalReducerActionType(CLEAR_TERMINAL),
+  SET_INPUT_VALUE: createTerminalReducerActionType(SET_INPUT_VALUE),
+  SET_TERMINAL_HISTORY: createTerminalReducerActionType(SET_TERMINAL_HISTORY),
+  SET_HISTORY_INDEX: createTerminalReducerActionType(SET_HISTORY_INDEX),
+  RESET_INPUT_VALUE: createTerminalReducerActionType(RESET_INPUT_VALUE),
 };
 
-export const SagasActionTypes = {
-  INCREASE_HISTORY_INDEX: createTerminalReducerActionType(INCREASE_HISTORY_INDEX),
-  DECREASE_HISTORY_INDEX: createTerminalReducerActionType(DECREASE_HISTORY_INDEX),
+export const SagaActionTypes = {
+  CREATE_TERMINAL_ROW: createTerminalSagaActionType(CREATE_TERMINAL_ROW),
+  DECREASE_HISTORY_INDEX: createTerminalSagaActionType(DECREASE_HISTORY_INDEX),
+  INCREASE_HISTORY_INDEX: createTerminalSagaActionType(INCREASE_HISTORY_INDEX),
+  LOAD_HISTORY: createTerminalSagaActionType(LOAD_HISTORY),
 };

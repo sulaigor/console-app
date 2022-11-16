@@ -4,8 +4,8 @@ import { getItem, setItem } from 'utils/localStorage';
 import { TerminalRow } from 'models/TerminalRow';
 import { DefaultValues } from '../reducer/const';
 import {
-  addTerminalHistoryItemAction,
   addTerminalRowAction,
+  addTerminalHistoryItemAction,
   resetInputValueAction,
   setHistoryIndexAction,
   setTerminalHistoryAction,
@@ -25,14 +25,20 @@ export const decreaseHistoryIndexSaga = function* () {
   yield put(setHistoryIndexAction(Math.max(historyIndex - 1, DefaultValues.HISTORY_INDEX)));
 };
 
-export const addTerminalRowSaga = function* () {
+export const createTerminalRowSaga = function* () {
   const inputValue: string = yield select(selectInputValue);
 
   const terminalRow = new TerminalRow(inputValue);
   yield put(addTerminalRowAction(terminalRow));
 
   const { input } = terminalRow;
-  if (input) yield put(addTerminalHistoryItemAction(input));
+  if (input) {
+    yield put(addTerminalHistoryItemAction(input));
+
+    // Update terminal history
+    const terminalHistory: string[] = yield select(selectTerminalHistory);
+    setItem(TERMINAL_HISTORY_KEY, JSON.stringify(terminalHistory));
+  }
 
   yield put(resetInputValueAction());
 };

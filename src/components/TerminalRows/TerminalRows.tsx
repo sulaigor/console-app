@@ -1,9 +1,10 @@
-import { useTerminalContext } from 'contexts/TerminalContext';
+import { useSelector } from 'react-redux';
+import { selectTerminalRows } from 'store/namespaces/terminal/selectors';
 import TerminalRow from './TerminalRow';
 import css from './terminalRows.module.scss';
 
 const TerminalRows = () => {
-  const { terminalRows } = useTerminalContext();
+  const terminalRows = useSelector(selectTerminalRows);
 
   if (terminalRows.length === 0) return null;
   return (

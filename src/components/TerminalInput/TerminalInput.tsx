@@ -1,23 +1,27 @@
+import { useDispatch, useSelector } from 'react-redux';
 import React, { ChangeEvent, FormEvent, RefObject, useLayoutEffect } from 'react';
-import { useTerminalContext } from 'contexts/TerminalContext';
 import TerminalLabel from 'components/TerminalLabel';
 import css from './terminalInput.module.scss';
+import { createTerminalRowAction, setInputValueAction } from 'store/namespaces/terminal/actions';
+import { selectInputValue } from 'store/namespaces/terminal/selectors';
 
 interface IProps {
   inputRef: RefObject<HTMLInputElement>;
 }
 
 const TerminalInput = ({ inputRef }: IProps) => {
-  const { inputValue, setInputValue, addTerminalRow } = useTerminalContext();
+  const dispatch = useDispatch();
+  const inputValue = useSelector(selectInputValue);
 
   useLayoutEffect(() => {
     inputRef.current?.focus();
   }, [inputRef]);
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) =>
+    dispatch(setInputValueAction(e.target.value));
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addTerminalRow();
+    dispatch(createTerminalRowAction());
   };
 
   return (

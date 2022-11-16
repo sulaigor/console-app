@@ -1,13 +1,14 @@
+import { useDispatch } from 'react-redux';
 import { CLEAR_KEY } from 'const/commands';
-import { useTerminalContext } from 'contexts/TerminalContext';
 import { useKeyboardEvent } from 'hooks/useKeyboardEvent';
+import { clearTerminalAction } from 'store/namespaces/terminal/actions';
 
 export const useTerminalClear = () => {
-  const { clearTerminal } = useTerminalContext();
+  const dispatch = useDispatch();
 
   useKeyboardEvent('keyup', ({ ctrlKey, key }) => {
     if (ctrlKey && key === CLEAR_KEY) {
-      clearTerminal();
+      dispatch(clearTerminalAction());
     }
   });
 };

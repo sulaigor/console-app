@@ -1,10 +1,18 @@
 import { IReducerAction } from 'types/reducer';
-import { SagasActionTypes } from './actionTypes';
+import { SagaActionTypes } from './actionTypes';
 
 export const increaseHistoryIndexAction = (): IReducerAction => ({
-  type: SagasActionTypes.INCREASE_HISTORY_INDEX,
+  type: SagaActionTypes.INCREASE_HISTORY_INDEX,
 });
 
 export const decreaseHistoryIndexAction = (): IReducerAction => ({
-  type: SagasActionTypes.DECREASE_HISTORY_INDEX,
+  type: SagaActionTypes.DECREASE_HISTORY_INDEX,
+});
+
+export const createTerminalRowAction = (): IReducerAction => ({
+  type: SagaActionTypes.CREATE_TERMINAL_ROW,
+});
+
+export const loadHistoryAction = (): IReducerAction => ({
+  type: SagaActionTypes.LOAD_HISTORY,
 });

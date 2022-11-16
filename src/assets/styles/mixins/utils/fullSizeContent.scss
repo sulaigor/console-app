@@ -1,0 +1,8 @@
+@import 'assets/styles/const/sizes';
+
+@mixin fullSizeContent($direction: $rowDirection) {
+  display: flex;
+  flex-direction: $direction;
+  width: 100%;
+  height: 100%;
+}

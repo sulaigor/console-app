@@ -1,9 +1,9 @@
-import { ReducerType } from 'types/reducer';
+import { ReducerUtil } from 'types/reducer';
 import { ReducerActionTypes } from '../actions';
 import { DefaultValues, initialState as terminalInitialState } from './const';
 import { ITerminalReducerState } from './types';
 
-export const terminalReducer: ReducerType<ITerminalReducerState> = (state = terminalInitialState, action) => {
+export const terminalReducer: ReducerUtil<ITerminalReducerState> = (state = terminalInitialState, action) => {
   const { type, payload } = action;
 
   switch (type) {

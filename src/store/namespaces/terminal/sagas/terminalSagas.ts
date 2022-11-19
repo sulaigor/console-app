@@ -1,4 +1,6 @@
 import { put, select } from 'redux-saga/effects';
+import { BlankActionUtil } from 'types/reducer';
+import { COMMAND_ACTIONS } from 'const/commands';
 import { TERMINAL_HISTORY_KEY } from 'const/terminal';
 import { getItem, setItem } from 'utils/localStorage';
 import { TerminalRow } from 'models/TerminalRow';
@@ -31,9 +33,12 @@ export const createTerminalRowSaga = function* () {
   const terminalRow = new TerminalRow(inputValue);
   yield put(addTerminalRowAction(terminalRow));
 
-  const { input } = terminalRow;
+  const { input, command } = terminalRow;
   if (input) {
     yield put(addTerminalHistoryItemAction(input));
+
+    const commandAction: BlankActionUtil | undefined = COMMAND_ACTIONS[command];
+    if (commandAction) yield put(commandAction());
 
     // Update terminal history
     const terminalHistory: string[] = yield select(selectTerminalHistory);

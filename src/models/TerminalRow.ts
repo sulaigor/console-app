@@ -7,13 +7,13 @@ export interface ITerminalRow {
 }
 
 export class TerminalRow implements ITerminalRow {
-  public input: string;
-  public output: string;
-  public command: string;
+  public readonly input: string;
+  public readonly output: string;
+  public readonly command: string;
 
   constructor(input: string) {
     this.input = input.trim();
-    this.output = getNotFoundOutput(this.input);
     this.command = getCommand(this.input);
+    this.output = getNotFoundOutput(this.input);
   }
 }

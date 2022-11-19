@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { CLEAR_KEY, COMMANDS } from 'const/commands';
+import { CLEAR_KEY, COMMAND_ACTIONS } from 'const/commands';
 import { useKeyboardEvent } from 'hooks/useKeyboardEvent';
 
 export const useTerminalClear = () => {
@@ -7,7 +7,7 @@ export const useTerminalClear = () => {
 
   useKeyboardEvent('keyup', ({ ctrlKey, key }) => {
     if (ctrlKey && key === CLEAR_KEY) {
-      dispatch(COMMANDS.clear());
+      dispatch(COMMAND_ACTIONS.clear());
     }
   });
 };
